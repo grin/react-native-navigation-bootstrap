@@ -105,9 +105,42 @@ const styles = StyleSheet.create({
 });
 
 Navigation.registerComponent('react-native-navigation-bootstrap', () => react_native_navigation_bootstrap);
-Navigation.startSingleScreenApp({
-  screen: {
-    screen: 'react-native-navigation-bootstrap',
-    title: 'Navigation Bootstrap'
-  }
+
+// Works fine as a single screen app:
+
+// Navigation.startSingleScreenApp({
+//   screen: {
+//     screen: 'react-native-navigation-bootstrap',
+//     title: 'Navigation Bootstrap'
+//   }
+// });
+
+// Layout issues as a tab-based app:
+Navigation.startTabBasedApp({
+  tabsStyle: {
+    tabBarButtonColor: 'black',
+    tabBarSelectedButtonColor: 'blue',
+    tabBarBackgroundColor: '#FFF'
+  },
+  tabs: [
+    {
+      label: 'Tab 1',
+      screen: 'react-native-navigation-bootstrap',
+      navigatorStyle: {navBarHidden: true}
+    },
+    {
+      label: 'Tab 2',
+      screen: 'react-native-navigation-bootstrap',
+      navigatorStyle: {navBarHidden: true}
+    },
+    {
+      label: 'Tab 3',
+      screen: 'react-native-navigation-bootstrap',
+      navigatorStyle: {navBarHidden: true}
+    }
+  ],
+  appStyle: {
+    forceTitlesDisplay: true
+  },
+  animationType: 'fade'
 });
