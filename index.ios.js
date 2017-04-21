@@ -16,39 +16,92 @@ import {Navigation} from 'react-native-navigation';
 class react_native_navigation_bootstrap extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={styles.screen}>
+        <View style={styles.statsContainer}>
+          <View style={[styles.row, styles.stats]}>
+            <View style={[styles.cell, {backgroundColor: 'pink'}]}>
+              <Text style={[styles.number, styles.leftAlign]}>1000000</Text>
+            </View>
+            <View style={[styles.cell, styles.center, {backgroundColor: 'red'}]}>
+              <Text style={[styles.centerAlign, styles.number]}>7</Text>
+            </View>
+            <View style={[styles.cell, {backgroundColor: 'yellow'}]}>
+              <Text style={[styles.number, styles.rightAlign]}>4</Text>
+            </View>
+          </View>
+          {<View style={[styles.row, styles.levelUp]}>
+            <View style={[styles.cell, {backgroundColor: 'cyan'}]}>
+              <Text style={[styles.label, styles.leftAlign]}>10000000</Text>
+            </View>
+            <View style={[styles.cell, styles.center, {backgroundColor: 'red'}]}>
+              <Text style={[styles.centerAlign, styles.tradersCount]}>2</Text>
+            </View>
+            <View style={[styles.cell, {backgroundColor: 'orange'}]}>
+              <Text style={[{color: 'black'}, styles.rightAlign]}>5</Text>
+            </View>
+          </View>}
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  screen: {
+    flexDirection: 'column',
+    flex: 1
+  },
+  statsContainer: {
+    backgroundColor: 'white'
+  },
+  stats: {
+    marginTop: 30,
+    paddingHorizontal: 15,
+    paddingBottom: 8,
+    height: 56
+  },
+  levelUp: {
+    paddingHorizontal: 15,
+    height: 42
+  },
+  row: {
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray'
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  cell: {
+    flex: 1
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  center: {
+    flexDirection: 'column',
+    alignItems: 'center'
   },
+  number: {
+    fontWeight: '600'
+  },
+  leftAlign: {
+    textAlign: 'left'
+  },
+  centerAlign: {
+    textAlign: 'center'
+  },
+  rightAlign: {
+    textAlign: 'right'
+  },
+  label: {
+    color: 'gray'
+  },
+  earnedIcon: {
+    alignSelf: 'flex-end'
+  },
+  tradersIcon: {
+    alignSelf: 'center'
+  },
+  tradersCount: {
+    color: 'green'
+  }
 });
 
 Navigation.registerComponent('react-native-navigation-bootstrap', () => react_native_navigation_bootstrap);
